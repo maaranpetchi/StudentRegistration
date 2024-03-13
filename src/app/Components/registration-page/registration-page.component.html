@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div class="container">
+        <div class="studentRegistration">
+          <form class="form-card" [formGroup]="RegistrationForm" (ngSubmit)="onSubmit()">
+            <div class="companyLogo">
+                <img src="../../../assets/AnglerLogo.png" alt="" srcset="">
+            </div>
+            <h1 class="mb-4">Student Registration</h1>
+            <div class="row">
+              <div class="col-md-6">
+                <div class="form-group">
+                    <label for="studentName" class="form-control-label">Student Name<span class="text-danger">*</span></label>
+                    <input type="text" id="studentName" class="form-control" placeholder="Student Name" formControlName="studentName"
+                         (keypress)="onlyAlphabets($event)">
+                    <div *ngIf="RegistrationForm.get('studentName')?.invalid && (RegistrationForm.get('studentName')?.dirty || RegistrationForm.get('studentName')?.touched)" class="text-danger">
+                      Student Name is required 
+                    </div>
+                  </div>
+              </div>
+              <div class="col-md-6">
+                <div class="form-group">
+                  <label for="studentCode" class="form-control-label">Student Code<span class="text-danger">*</span></label>
+                  <input type="text" id="studentCode" class="form-control" placeholder="Student Code" formControlName="studentCode">
+                  <div *ngIf="RegistrationForm.get('studentCode')?.invalid && RegistrationForm.get('studentCode')?.touched" class="text-danger">
+                    Student Code is required
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-md-6">
+                <div class="form-group">
+                  <label for="department" class="form-control-label">Department<span class="text-danger">*</span></label>
+                  <input type="text" id="department" class="form-control" placeholder="Department" formControlName="department">
+                  <div *ngIf="RegistrationForm.get('department')?.invalid && RegistrationForm.get('department')?.touched" class="text-danger">
+                    Department is required
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-6">
+                <div class="form-group">
+                  <label for="gender" class="form-control-label">Gender<span class="text-danger">*</span></label>
+                  <select id="gender" class="form-control" formControlName="gender">
+                    <option value="male">Male</option>
+                    <option value="female">Female</option>
+                    <option value="others">Others</option>
+                  </select>
+                  <div *ngIf="RegistrationForm.get('gender')?.invalid && RegistrationForm.get('gender')?.touched" class="text-danger">
+                    Gender is required
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-md-6">
+                <div class="form-group">
+                  <label for="email" class="form-control-label">Email Id<span class="text-danger">*</span></label>
+                  <input type="email" id="email" class="form-control" placeholder="Email Id" formControlName="email">
+                  <div *ngIf="RegistrationForm.get('email')?.invalid && RegistrationForm.get('email')?.touched" class="text-danger">
+                    Valid Email is  required
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-6">
+                <div class="form-group">
+                  <label for="dob" class="form-control-label">DOB<span class="text-danger">*</span></label>
+                  <input type="date" id="dob" class="form-control" formControlName="dob">
+                  <div *ngIf="RegistrationForm.get('dob')?.invalid && RegistrationForm.get('dob')?.touched" class="text-danger">
+                    Date of Birth is required
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col">
+                <button type="submit" class="btn btn-primary">Register</button>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+</body>
+</html>
